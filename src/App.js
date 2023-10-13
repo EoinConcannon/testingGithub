@@ -5,9 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 //header, footer & content js are in the src/components folder
 import Content from './components/content';
-import Footer from './components/footer';
-import Header from './components/header';
+import Footer from './components/footer';//replaced by read
+import Header from './components/header';//replaced by create
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Create from './components/create';
+import Read from './components/read';
 
 function App() {
   return (
@@ -30,8 +32,8 @@ function App() {
         <Routes>
           {/* accessed via components folder and hrefs above */}
           <Route path='/' element={<Content></Content>}></Route>
-          <Route path='/create' element={<Header></Header>}></Route>
-          <Route path='/read' element={<Footer></Footer>}></Route>
+          <Route path='/create' element={<Create></Create>}></Route>
+          <Route path='/read' element={<Read></Read>}></Route> {/*displays an array of data / imgs using json*/}
         </Routes>
       </div>
     </BrowserRouter>
