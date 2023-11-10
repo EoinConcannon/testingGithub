@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Create() {
 
@@ -10,6 +11,16 @@ function Create() {
         e.preventDefault();//stops being called multiple times
 
         console.log("Title: " + title + "\nAuthor: " + author + "\nCover: " + cover)//displays user inputs to console
+
+        const book = ({
+            title: title,
+            cover: cover,
+            author: author
+        });
+
+        axios.post("http://localhost:4000/api/books", book)
+            .then()
+            .catch();
     }
     return (
         <div>
