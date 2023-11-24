@@ -40,6 +40,13 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('books', bookSchema);//new array of json data
 
+app.put('/api/book/:id', async (req, res) => {
+    console.log("Update: " + req.params.id);
+
+    let book = await bookModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.send(book);
+})
+
 app.post('/api/books', (req, res) => {//on create.js page when "add book" is clicked, check the integrated terminal below, the new book is recorded
     console.log(req.body);
     bookModel.create({

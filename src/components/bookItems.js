@@ -1,5 +1,6 @@
 // https://react-bootstrap.netlify.app/docs/components/cards
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function BookItems(props) {
     return (
@@ -14,6 +15,8 @@ function BookItems(props) {
                         <p>{props.myBook.author}</p>
                     </footer>
                 </Card.Body>
+                <Link to={"/edit/" + props.myBook._id} className='btn btn-primary'>Edit</Link> 
+                {/* _id = unique identifier , edit brings you to file address*/}
             </Card>
         </div>
     );
