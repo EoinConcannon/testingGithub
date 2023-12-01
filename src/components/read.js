@@ -24,11 +24,28 @@ function Read() {
         }, []//empty array stops repeating
     );
 
+    // e = event
+    const ReloadData = (e) => {
+        axios.get("http://localhost:4000/api/books")
+            .then(
+                (response) => {
+                    setData(response.data);
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error);
+                }
+            )
+    }
+
     return (
         <div>
             <h3>Hello from my read component!</h3>
-            {<Books myBooks={data}></Books>}
+            {<Books myBooks={data} Reload={ReloadData}></Books>} 
             {/* imported from books.js */}
+            {/* Reload = variable */}
+            {/* this reload data is sent to books.js */}
         </div>
     );
 }

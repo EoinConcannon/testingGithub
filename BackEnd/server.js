@@ -40,6 +40,13 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('books', bookSchema);//new array of json data
 
+app.delete('/api/book/:id', async (req, res) => { //can give this any url you want (url is '/api/book/:id' to be professional / following this, url in bookItems.js must be exact match)
+    console.log("Delete: " + req.params.id);
+
+    let book = await bookModel.findByIdAndDelete(req.params.id) //waits for response, doesn't freeze app
+    res.send(book); // need to send a response or browser will send an error
+})
+
 app.put('/api/book/:id', async (req, res) => {
     console.log("Update: " + req.params.id);
 
